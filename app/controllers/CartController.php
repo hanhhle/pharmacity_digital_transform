@@ -19,8 +19,8 @@ class CartController {
                 CartModel::addItem($userId, $productId, $qty);
                 $_SESSION['cart_toast'] = 'Đã thêm sản phẩm vào giỏ hàng!';
             } elseif ($action === 'buy_now' && $productId > 0) {
-                CartModel::addItem($userId, $productId, $qty);
-                header('Location: /index.php?route=checkout');
+                CartModel::buyNow($userId, $productId, $qty);
+                header('Location: ' . (defined('BASE_URL') ? BASE_URL : '') . '/index.php?route=checkout');
                 exit;
             } elseif ($action === 'update' && $productId > 0) {
                 CartModel::updateQuantity($userId, $productId, $qty);
@@ -38,7 +38,7 @@ class CartController {
                 exit;
             }
 
-            header('Location: /index.php?route=cart');
+            header('Location: ' . (defined('BASE_URL') ? BASE_URL : '') . '/index.php?route=cart');
             exit;
         }
 

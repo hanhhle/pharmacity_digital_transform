@@ -23,7 +23,7 @@
 <main class="container mx-auto px-4 md:max-w-[1384px] py-6">
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-xs text-slate-500 mb-6 no-print">
-    <a href="/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
+    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
     <span>/</span>
     <span class="font-semibold text-slate-800">Tài khoản</span>
   </div>
@@ -76,7 +76,7 @@
             <h3 class="font-bold text-sm mt-1">Đến Nhà Thuốc Đo Sinh Hiệu Tại Kiosk Sức Khỏe IoT?</h3>
             <p class="text-xs text-emerald-100">Dữ liệu đo tại trạm Kiosk sẽ tự động đẩy trực tiếp vào hồ sơ này thông qua Mã Khách Hàng / SĐT.</p>
           </div>
-          <a href="/index.php?route=kiosk&step=connect" class="bg-white text-emerald-800 hover:bg-emerald-50 font-bold text-xs px-4 py-2.5 rounded-lg shrink-0 transition-all">
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=kiosk&step=connect" class="bg-white text-emerald-800 hover:bg-emerald-50 font-bold text-xs px-4 py-2.5 rounded-lg shrink-0 transition-all">
             Chuyển Sang Trạm Kiosk IoT →
           </a>
         </div>
@@ -92,7 +92,7 @@
           <button onclick="document.getElementById('update-metrics-modal').classList.add('hidden')" class="text-slate-400 hover:text-slate-600 text-sm font-bold">✕</button>
         </div>
 
-        <form action="/index.php?route=account" method="POST" class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+        <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=account" method="POST" class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
           <input type="hidden" name="action" value="update_metrics">
 
           <div>
@@ -247,7 +247,7 @@
                       Xem Trạng Thái
                     </button>
                   <?php elseif (!empty($ord['can_cancel']) || $ord['status'] === 'Đang điều phối dược sĩ'): ?>
-                    <form action="/index.php?route=account#prescriptions" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng <?= $ord['order_code'] ?> không?');" class="inline">
+                    <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=account#prescriptions" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng <?= $ord['order_code'] ?> không?');" class="inline">
                       <input type="hidden" name="action" value="cancel_order">
                       <input type="hidden" name="order_code" value="<?= htmlspecialchars($ord['order_code']) ?>">
                       <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs py-2.5 rounded-xl transition-all shadow-xs text-center">
@@ -255,7 +255,7 @@
                       </button>
                     </form>
                   <?php elseif ($ord['status'] === 'Đã hoàn thành'): ?>
-                    <a href="/index.php?route=checkout" onclick="alert('Đã chọn mua lại sản phẩm từ đơn <?= $ord['order_code'] ?>! Đang chuyển đến trang Checkout...')" class="inline-block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 rounded-xl transition-all shadow-xs text-center">
+                    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=account&reorder_code=<?= urlencode($ord['order_code']) ?>" class="inline-block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 rounded-xl transition-all shadow-xs text-center">
                       Mua lại đơn này →
                     </a>
                   <?php else: ?>
@@ -308,7 +308,7 @@
 
                     <div class="w-36 text-right shrink-0">
                       <?php if ($ord['status'] === 'Đã hoàn thành'): ?>
-                        <a href="/index.php?route=checkout" onclick="alert('Đã chọn mua lại sản phẩm từ đơn <?= $ord['order_code'] ?>! Đang chuyển đến trang Checkout...')" class="inline-block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 rounded-xl transition-all shadow-xs text-center">
+                        <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=account&reorder_code=<?= urlencode($ord['order_code']) ?>" class="inline-block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 rounded-xl transition-all shadow-xs text-center">
                           Mua lại đơn này →
                         </a>
                       <?php else: ?>
@@ -370,7 +370,7 @@
                   </span>
                 <?php else: ?>
                   <!-- Real-Time Automatic Medication Confirmation Form -->
-                  <form action="/index.php?route=account#reminders" method="POST" class="inline">
+                  <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=account#reminders" method="POST" class="inline">
                     <input type="hidden" name="action" value="confirm_medication">
                     <input type="hidden" name="rx_id" value="<?= htmlspecialchars($rx['id']) ?>">
                     <input type="hidden" name="drug" value="<?= htmlspecialchars($rx['drug']) ?>">
@@ -381,7 +381,7 @@
                   </form>
                 <?php endif; ?>
 
-                <a href="/index.php?route=checkout" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl transition-all shadow-xs">
+                <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=checkout" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl transition-all shadow-xs">
                   Tái Đơn Tự Động →
                 </a>
               </div>

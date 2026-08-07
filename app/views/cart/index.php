@@ -20,7 +20,7 @@
             </div>
             <h2 class="text-xl font-bold text-slate-800">Giỏ hàng của bạn đang trống</h2>
             <p class="text-slate-500 text-sm">Hãy khám phá hàng ngàn sản phẩm thuốc, TPCN và dược mỹ phẩm chính hãng tại Pharmacity!</p>
-            <a href="/index.php?route=home" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-xl transition-all shadow-md">
+            <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-xl transition-all shadow-md">
               Khám phá sản phẩm ngay
             </a>
           </div>
@@ -51,7 +51,7 @@
                   <div class="flex items-center justify-between space-x-4">
                     <div class="flex flex-1 items-start gap-2">
                       <label for="select-all-checkbox" class="font-bold text-xs md:text-sm uppercase tracking-wider text-slate-700 cursor-pointer select-none">Sản phẩm</label>
-                      <form action="/index.php?route=cart" method="POST" class="inline">
+                      <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart" method="POST" class="inline">
                         <input type="hidden" name="action" value="clear">
                         <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa tất cả sản phẩm khỏi giỏ hàng?')" class="font-bold text-xs text-blue-600 hover:underline border-l border-slate-300 pl-3">
                           Xóa tất cả
@@ -98,7 +98,7 @@
                         
                         <!-- Thumbnail Link -->
                         <div class="relative h-18 w-18 rounded-xl border border-slate-200 overflow-hidden bg-slate-50 shrink-0">
-                          <a href="/index.php?route=product&id=<?= $item['id'] ?>">
+                          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=product&id=<?= $item['id'] ?>">
                             <img class="w-full h-full object-contain p-1" src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                           </a>
                         </div>
@@ -106,7 +106,7 @@
                         <!-- Details Row -->
                         <div class="flex flex-col md:flex-row justify-between md:space-x-4">
                           <div class="grid flex-1 content-start gap-1">
-                            <a href="/index.php?route=product&id=<?= $item['id'] ?>">
+                            <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=product&id=<?= $item['id'] ?>">
                               <h3 class="font-bold text-xs md:text-sm text-slate-800 line-clamp-2 hover:text-blue-600 transition-all">
                                 <?= htmlspecialchars($item['name']) ?>
                               </h3>
@@ -134,7 +134,7 @@
 
                             <!-- Quantity Adjuster Form -->
                             <div class="flex items-center gap-1">
-                              <form action="/index.php?route=cart" method="POST" class="inline">
+                              <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart" method="POST" class="inline">
                                 <input type="hidden" name="action" value="update">
                                 <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
                                 <input type="hidden" name="quantity" value="<?= $item['cart_quantity'] - 1 ?>">
@@ -145,7 +145,7 @@
                                 <?= $item['cart_quantity'] ?>
                               </span>
 
-                              <form action="/index.php?route=cart" method="POST" class="inline">
+                              <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart" method="POST" class="inline">
                                 <input type="hidden" name="action" value="update">
                                 <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
                                 <input type="hidden" name="quantity" value="<?= $item['cart_quantity'] + 1 ?>">
@@ -169,7 +169,7 @@
 
                     <!-- Delete Button -->
                     <div class="pt-2">
-                      <form action="/index.php?route=cart" method="POST">
+                      <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart" method="POST">
                         <input type="hidden" name="action" value="remove">
                         <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
                         <button type="submit" title="Xóa khỏi giỏ" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-400 flex items-center justify-center transition-all">
@@ -222,7 +222,7 @@
               </div>
 
               <!-- Proceed to Checkout Button -->
-              <a id="checkout-btn" href="/index.php?route=checkout" class="block w-full text-center font-extrabold rounded-xl bg-blue-600 hover:bg-blue-700 text-white py-3.5 text-sm transition-all shadow-md">
+              <a id="checkout-btn" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=checkout" class="block w-full text-center font-extrabold rounded-xl bg-blue-600 hover:bg-blue-700 text-white py-3.5 text-sm transition-all shadow-md">
                 Mua hàng (<span id="checked-count">0</span>)
               </a>
 

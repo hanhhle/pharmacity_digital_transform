@@ -37,7 +37,7 @@ $relatedProducts = ProductModel::getAllProducts();
         </svg>
         <span><?= htmlspecialchars($_SESSION['cart_toast']) ?></span>
       </div>
-      <a href="/index.php?route=checkout" class="bg-white text-emerald-800 font-extrabold text-xs px-3.5 py-1.5 rounded-xl hover:bg-slate-100 transition-all">
+      <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=checkout" class="bg-white text-emerald-800 font-extrabold text-xs px-3.5 py-1.5 rounded-xl hover:bg-slate-100 transition-all">
         Xem giỏ hàng →
       </a>
     </div>
@@ -52,7 +52,7 @@ $relatedProducts = ProductModel::getAllProducts();
       <nav aria-label="Breadcrumb">
         <ul data-slot="breadcrumb-list" class="flex flex-wrap items-center gap-x-1 py-2 sm:gap-x-2 md:gap-x-3">
           <li data-slot="breadcrumb-item">
-            <a data-slot="breadcrumb-link" href="/index.php?route=home">
+            <a data-slot="breadcrumb-link" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home">
               <span class="font-base text-[12px] leading-12 font-normal md:text-sm md:leading-14 md:font-normal text-content-medium hover:text-content-strong">Trang chủ</span>
             </a>
           </li>
@@ -61,7 +61,7 @@ $relatedProducts = ProductModel::getAllProducts();
             <span class="px-0.5 text-xs text-content-neutral-disabled md:hidden">/</span>
           </li>
           <li data-slot="breadcrumb-item">
-            <a data-slot="breadcrumb-link" href="/index.php?route=category&name=<?= urlencode($product['category']) ?>">
+            <a data-slot="breadcrumb-link" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=<?= urlencode($product['category']) ?>">
               <span class="font-base text-[12px] leading-12 font-normal md:text-sm md:leading-14 md:font-normal text-content-medium hover:text-content-strong"><?= htmlspecialchars($product['category']) ?></span>
             </a>
           </li>
@@ -167,7 +167,7 @@ $relatedProducts = ProductModel::getAllProducts();
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     Tồn kho Real-Time: Còn hàng tại 982/1.000+ Nhà thuốc
                   </span>
-                  <a href="/index.php?route=stores" class="text-blue-600 font-extrabold hover:underline">Xem bản đồ shop gần bạn →</a>
+                  <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=stores" class="text-blue-600 font-extrabold hover:underline">Xem bản đồ shop gần bạn →</a>
                 </div>
                 <p class="text-slate-600">Sẵn sàng giao siêu tốc 1H hoặc Click & Collect (Nhận tại nhà thuốc sau 15 phút).</p>
               </div>
@@ -193,7 +193,7 @@ $relatedProducts = ProductModel::getAllProducts();
               </div>
 
               <!-- Action Buttons -->
-              <form action="/index.php?route=cart" method="POST" class="grid grid-cols-2 gap-3">
+              <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart" method="POST" class="grid grid-cols-2 gap-3">
                 <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                 <input type="hidden" id="form-product-qty" name="quantity" value="1">
                 
@@ -221,7 +221,7 @@ $relatedProducts = ProductModel::getAllProducts();
                 <p class="font-bold text-sm text-slate-900 border-b border-slate-200 pb-2">Thông tin sản phẩm</p>
                 <div class="grid grid-cols-1 md:grid-cols-[140px_1fr] text-xs gap-1 pb-2 border-b border-slate-200/60">
                   <span class="text-slate-500">Danh mục:</span>
-                  <a href="/index.php?route=category&name=<?= urlencode($product['category']) ?>" class="font-bold text-blue-600 hover:underline"><?= htmlspecialchars($product['category']) ?></a>
+                  <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=<?= urlencode($product['category']) ?>" class="font-bold text-blue-600 hover:underline"><?= htmlspecialchars($product['category']) ?></a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-[140px_1fr] text-xs gap-1 pb-2 border-b border-slate-200/60">
                   <span class="text-slate-500">Công dụng:</span>
@@ -395,7 +395,7 @@ $relatedProducts = ProductModel::getAllProducts();
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
       <?php foreach (array_slice($relatedProducts, 0, 6) as $rp): ?>
         <div class="bg-white rounded-2xl p-3 border border-slate-200 flex flex-col justify-between hover:shadow-md transition-all">
-          <a href="/index.php?route=product&id=<?= $rp['id'] ?>">
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=product&id=<?= $rp['id'] ?>">
             <img src="<?= htmlspecialchars($rp['image']) ?>" alt="<?= htmlspecialchars($rp['name']) ?>" class="w-full h-32 object-contain my-2">
             <h4 class="text-xs font-semibold text-slate-900 line-clamp-2 h-8 my-1"><?= htmlspecialchars($rp['name']) ?></h4>
           </a>

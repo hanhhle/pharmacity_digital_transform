@@ -3,7 +3,7 @@
 <main class="container mx-auto px-4 md:max-w-[1384px] py-6">
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-xs text-slate-500 mb-6">
-    <a href="/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
+    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
     <span>/</span>
     <span class="font-semibold text-slate-800">Upload Đơn Thuốc Điện Tử AI OCR</span>
   </div>
@@ -15,14 +15,14 @@
         <h1 class="text-xl font-bold text-slate-900 mt-1">Upload Đơn Thuốc Điện Tử AI OCR</h1>
         <p class="text-xs text-slate-500 mt-0.5">Chụp hoặc tải ảnh đơn thuốc bác sĩ kê $\rightarrow$ AI OCR trích xuất tên thuốc $\rightarrow$ Dược sĩ Pharmacity kiểm tra & giao hàng 1H.</p>
       </div>
-      <a href="/index.php?route=home" class="text-xs font-bold text-blue-600 hover:underline">← Quay lại cửa hàng</a>
+      <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="text-xs font-bold text-blue-600 hover:underline">← Quay lại cửa hàng</a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       
       <!-- Upload Box -->
       <div>
-        <form action="/index.php?route=prescription" method="POST" enctype="multipart/form-data">
+        <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=prescription" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="action" value="upload_ocr">
           
           <div class="border-2 border-dashed border-blue-500 bg-blue-50/50 p-8 rounded-2xl text-center cursor-pointer hover:bg-blue-50 transition-all" onclick="document.getElementById('fileInput').click();">
@@ -91,7 +91,7 @@
                 <span class="text-xs text-slate-500">Tổng tiền thuốc kê đơn:</span>
                 <div class="text-xl font-black text-blue-600"><?= number_format($ocrResult['total_amount'], 0, ',', '.') ?> đ</div>
               </div>
-              <a href="/index.php?route=checkout" class="bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl transition-all shadow">
+              <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=checkout" class="bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl transition-all shadow">
                 🚀 Đặt Mua 1-Click (Giao 1 Giờ)
               </a>
             </div>

@@ -180,6 +180,88 @@ class CartModel {
         }
     }
 
+    public static function buyNow($userId, $productId, $quantity = 1) {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $quantity = max(1, intval($quantity));
+        $now = time();
+
+        if (!isset($_SESSION['user_cart'][$userId]) || !is_array($_SESSION['user_cart'][$userId])) {
+            $_SESSION['user_cart'][$userId] = [];
+        }
+
+        // Uncheck / deprioritize all previous cart items
+        foreach ($_SESSION['user_cart'][$userId] as $pId => &$itemData) {
+            if (is_array($itemData)) {
+                $itemData['is_selected'] = 0;
+                $itemData['added_at'] = $now - 3600;
+            }
+        }
+        unset($itemData);
+
+        // Add / set target item as the ONLY active/recent item
+        $_SESSION['user_cart'][$userId][$productId] = [
+            'quantity' => $quantity,
+            'is_selected' => 1,
+            'added_at' => $now
+        ];
+
+        if (!Database::isMockMode()) {
+            try {
+                $pdo = Database::getConnection();
+                $stmt = $pdo->prepare("UPDATE cart_items SET is_selected = 0 WHERE user_id = :uid");
+                $stmt->execute([':uid' => $userId]);
+
+                $stmt = $pdo->prepare("INSERT INTO cart_items (user_id, product_id, quantity, is_selected, updated_at) 
+                    VALUES (:uid, :pid, :qty, 1, CURRENT_TIMESTAMP) 
+                    ON DUPLICATE KEY UPDATE quantity = :qty2, is_selected = 1, updated_at = CURRENT_TIMESTAMP");
+                $stmt->execute([':uid' => $userId, ':pid' => $productId, ':qty' => $quantity, ':qty2' => $quantity]);
+            } catch (Exception $e) {}
+        }
+    }
+
+    public static function reorderItems($userId, $itemsList) {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $now = time();
+        if (!isset($_SESSION['user_cart'][$userId]) || !is_array($_SESSION['user_cart'][$userId])) {
+            $_SESSION['user_cart'][$userId] = [];
+        }
+
+        // Uncheck / deprioritize all previous cart items
+        foreach ($_SESSION['user_cart'][$userId] as $pId => &$itemData) {
+            if (is_array($itemData)) {
+                $itemData['is_selected'] = 0;
+                $itemData['added_at'] = $now - 3600;
+            }
+        }
+        unset($itemData);
+
+        foreach ($itemsList as $item) {
+            $pId = is_array($item) ? $item['id'] : intval($item);
+            $qty = is_array($item) ? ($item['quantity'] ?? 1) : 1;
+            $_SESSION['user_cart'][$userId][$pId] = [
+                'quantity' => $qty,
+                'is_selected' => 1,
+                'added_at' => $now
+            ];
+
+            if (!Database::isMockMode()) {
+                try {
+                    $pdo = Database::getConnection();
+                    $stmt = $pdo->prepare("INSERT INTO cart_items (user_id, product_id, quantity, is_selected, updated_at) 
+                        VALUES (:uid, :pid, :qty, 1, CURRENT_TIMESTAMP) 
+                        ON DUPLICATE KEY UPDATE quantity = :qty2, is_selected = 1, updated_at = CURRENT_TIMESTAMP");
+                    $stmt->execute([':uid' => $userId, ':pid' => $pId, ':qty' => $qty, ':qty2' => $qty]);
+                } catch (Exception $e) {}
+            }
+        }
+    }
+
     public static function getCartCount($userId = 1) {
         $items = self::getCartItems($userId);
         $total = 0;

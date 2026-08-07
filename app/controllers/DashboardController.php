@@ -104,6 +104,26 @@ class DashboardController {
             $_SESSION['orders_history'] = $ordersHistory;
         }
 
+        // Handle Reorder ("Mua lại đơn này")
+        if (isset($_GET['reorder_code']) || (isset($_POST['action']) && $_POST['action'] === 'reorder_order')) {
+            $reorderCode = $_GET['reorder_code'] ?? ($_POST['order_code'] ?? '');
+            require_once __DIR__ . '/../models/CartModel.php';
+            
+            $reorderItemsMap = [
+                'PMC-ORD-2026-874' => [['id' => 6, 'quantity' => 1], ['id' => 1, 'quantity' => 1]],
+                'PMC-ORD-2026-901' => [['id' => 7, 'quantity' => 1], ['id' => 6, 'quantity' => 1]],
+                'PMC-ORD-2026-905' => [['id' => 1, 'quantity' => 1], ['id' => 6, 'quantity' => 1]],
+                'PMC-ORD-2026-904' => [['id' => 3, 'quantity' => 1], ['id' => 5, 'quantity' => 1]],
+                'PMC-ORD-2026-903' => [['id' => 1, 'quantity' => 1], ['id' => 2, 'quantity' => 1]]
+            ];
+
+            $itemsToReorder = $reorderItemsMap[$reorderCode] ?? [['id' => 6, 'quantity' => 1]];
+            CartModel::reorderItems(1, $itemsToReorder);
+
+            header('Location: ' . (defined('BASE_URL') ? BASE_URL : '') . '/index.php?route=checkout');
+            exit;
+        }
+
         // Sample P-Xu Extra points history logs
         $pointsHistory = [
             ['date' => '07/08/2026 22:00', 'type' => 'earn', 'points' => '+50 P-Xu', 'title' => 'Thưởng đo sinh hiệu Kiosk IoT Pharmacity PMC Q1', 'balance' => '2.450 P-Xu'],
@@ -127,13 +147,14 @@ class DashboardController {
                 $_SESSION['points_history'] = $pointsHistory;
             }
 
-            // Real-time automatic hour calculation
-            $currentHour = intval(date('H'));
+            // Real-time automatic hour & minute calculation (±60 minutes rule)
+            $currentMinutes = intval(date('H')) * 60 + intval(date('i'));
             $scheduledHour = intval(substr($slot, 0, 2));
-            $diff = abs($currentHour - $scheduledHour);
+            $scheduledMin = intval(substr($slot, 3, 2));
+            $scheduledMinutes = $scheduledHour * 60 + $scheduledMin;
+            $diffMinutes = abs($currentMinutes - $scheduledMinutes);
 
-            // Automatic determination based on real-time clock
-            $isOntime = true; // Auto-validated real-time check
+            $isOntime = ($diffMinutes <= 60);
 
             if ($isOntime) {
                 $_SESSION['loyalty_points'] += 10;
@@ -152,7 +173,14 @@ class DashboardController {
                 $_SESSION['flash_msg'] = [
                     'type' => 'success',
                     'title' => '🟢 ĐIỂM DANH THÀNH CÔNG (+10 P-XU)',
-                    'text' => "Hệ thống đã tự động đối soát thời gian thực (" . date('H:i') . ") trùng khớp khung giờ quy định ($slot). Đã cộng +10 P-Xu Extra vào tài khoản!"
+                    'text' => "Hệ thống đã tự động đối soát thời gian thực (" . date('H:i') . ") trùng khớp khung giờ quy định ($slot ±60 phút). Đã cộng +10 P-Xu Extra vào tài khoản!"
+                ];
+            } else {
+                $_SESSION['confirmed_today_' . $rxId] = true;
+                $_SESSION['flash_msg'] = [
+                    'type' => 'warning',
+                    'title' => '⏰ ĐÃ GHI NHẬN LIỀU UỐNG THUỐC (KHÔNG ĐỦ ĐIỀU KIỆN TÍCH ĐIỂM)',
+                    'text' => "Thời gian thực hiện tại (" . date('H:i') . ") lệch hơn 60 phút so với khung giờ quy định ($slot). Đã ghi nhận bạn đã uống liều này, nhưng không đủ điều kiện nhận +10 P-Xu thưởng đúng giờ."
                 ];
             }
         }

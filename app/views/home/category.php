@@ -7,7 +7,7 @@ $catName = $_GET['name'] ?? 'Danh mục sản phẩm';
 <main class="container mx-auto px-4 md:max-w-[1384px] py-6">
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
-    <a href="/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
+    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
     <span>/</span>
     <span class="font-semibold text-slate-800"><?= htmlspecialchars($catName) ?></span>
   </div>
@@ -59,17 +59,17 @@ $catName = $_GET['name'] ?? 'Danh mục sản phẩm';
         <?php foreach ($products as $p): ?>
           <div class="bg-white border border-slate-200 rounded-xl p-3 flex flex-col justify-between relative shadow-sm hover:shadow-md transition-all">
             <span class="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded z-10">Giảm 15%</span>
-            <a href="/index.php?route=product&id=<?= $p['id'] ?>">
+            <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=product&id=<?= $p['id'] ?>">
               <img class="w-full h-36 object-contain my-2" src="<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
             </a>
             <div>
               <div class="text-[10px] font-bold text-slate-400 uppercase"><?= htmlspecialchars($p['category']) ?></div>
               <h3 class="text-xs font-semibold text-slate-800 line-clamp-2 h-8 my-1">
-                <a href="/index.php?route=product&id=<?= $p['id'] ?>" class="hover:text-blue-600"><?= htmlspecialchars($p['name']) ?></a>
+                <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=product&id=<?= $p['id'] ?>" class="hover:text-blue-600"><?= htmlspecialchars($p['name']) ?></a>
               </h3>
               <div class="text-sm font-extrabold text-slate-900"><?= number_format($p['price'], 0, ',', '.') ?> ₫</div>
             </div>
-            <button onclick="window.location.href='/index.php?route=product&id=<?= $p['id'] ?>'" class="mt-3 w-full border border-blue-600 text-blue-600 font-bold text-xs py-1.5 rounded-lg hover:bg-blue-600 hover:text-white transition-all">+ Chọn mua</button>
+            <button onclick="window.location.href='<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=product&id=<?= $p['id'] ?>'" class="mt-3 w-full border border-blue-600 text-blue-600 font-bold text-xs py-1.5 rounded-lg hover:bg-blue-600 hover:text-white transition-all">+ Chọn mua</button>
           </div>
         <?php endforeach; ?>
       </div>

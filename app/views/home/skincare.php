@@ -94,9 +94,9 @@ $skincareProducts = [
   <!-- Breadcrumb -->
   <div class="bg-slate-100 py-2.5 mb-6">
     <div class="container mx-auto px-4 md:max-w-[1384px] flex items-center gap-2 text-xs text-slate-500">
-      <a href="/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
+      <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
       <span>/</span>
-      <a href="/index.php?route=category&name=Goc+lam+dep" class="hover:text-blue-600">Góc làm đẹp</a>
+      <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Goc+lam+dep" class="hover:text-blue-600">Góc làm đẹp</a>
       <span>/</span>
       <span class="font-bold text-slate-800">Chăm sóc da & Dược Mỹ Phẩm</span>
     </div>
@@ -121,7 +121,7 @@ $skincareProducts = [
       </h2>
       <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
         <?php foreach ($skinTypes as $st): ?>
-          <a href="/index.php?route=category&name=<?= urlencode($st['name']) ?>" class="group flex flex-col items-center gap-2 min-w-[140px] md:min-w-[200px] shrink-0 bg-slate-50 hover:bg-rose-50 p-3 rounded-2xl border border-slate-200 hover:border-rose-300 transition-all shadow-2xs">
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=<?= urlencode($st['name']) ?>" class="group flex flex-col items-center gap-2 min-w-[140px] md:min-w-[200px] shrink-0 bg-slate-50 hover:bg-rose-50 p-3 rounded-2xl border border-slate-200 hover:border-rose-300 transition-all shadow-2xs">
             <div class="h-36 md:h-48 w-full rounded-xl overflow-hidden bg-white">
               <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="<?= $st['img'] ?>" alt="<?= htmlspecialchars($st['name']) ?>">
             </div>
@@ -138,7 +138,7 @@ $skincareProducts = [
       </h2>
       <div class="grid grid-cols-4 md:grid-cols-8 gap-3">
         <?php foreach ($skinConditions as $sc): ?>
-          <a href="/index.php?route=category&name=<?= urlencode($sc['name']) ?>" class="group flex flex-col items-center gap-2 text-center p-2 rounded-2xl hover:bg-rose-50 transition-all">
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=<?= urlencode($sc['name']) ?>" class="group flex flex-col items-center gap-2 text-center p-2 rounded-2xl hover:bg-rose-50 transition-all">
             <img class="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-slate-100 group-hover:border-rose-400 group-hover:scale-105 transition-all shadow-2xs" src="<?= $sc['img'] ?>" alt="<?= htmlspecialchars($sc['name']) ?>">
             <span class="text-xs font-semibold text-slate-700 group-hover:text-rose-600 line-clamp-2"><?= htmlspecialchars($sc['name']) ?></span>
           </a>
@@ -150,13 +150,13 @@ $skincareProducts = [
     <section class="bg-rose-50/50 p-5 rounded-3xl border border-rose-100">
       <h2 class="text-lg md:text-xl font-bold text-slate-900 mb-3">Thương Hiệu Dược Mỹ Phẩm Nổi Bật</h2>
       <div class="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide">
-        <a href="/index.php?route=category&name=Paulas+Choice" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Paula's Choice</a>
-        <a href="/index.php?route=category&name=Cetaphil" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Cetaphil</a>
-        <a href="/index.php?route=category&name=Bioderma" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Bioderma</a>
-        <a href="/index.php?route=category&name=Anessa" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Anessa</a>
-        <a href="/index.php?route=category&name=La+Roche+Posay" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">La Roche-Posay</a>
-        <a href="/index.php?route=category&name=Senka" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Senka</a>
-        <a href="/index.php?route=category&name=Cocoon" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Cocoon</a>
+        <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Paulas+Choice" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Paula's Choice</a>
+        <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Cetaphil" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Cetaphil</a>
+        <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Bioderma" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Bioderma</a>
+        <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Anessa" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Anessa</a>
+        <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=La+Roche+Posay" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">La Roche-Posay</a>
+        <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Senka" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Senka</a>
+        <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Cocoon" class="bg-white px-5 py-2.5 rounded-xl border border-slate-200 font-extrabold text-xs text-slate-800 hover:border-rose-400 hover:text-rose-600 whitespace-nowrap shadow-2xs">Cocoon</a>
       </div>
     </section>
 
@@ -261,13 +261,17 @@ $skincareProducts = [
               <?php endif; ?>
 
               <div class="space-y-2">
-                <div class="h-40 md:h-48 w-full rounded-xl overflow-hidden bg-slate-50 p-2">
-                  <img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="<?= $p['img'] ?>" alt="<?= htmlspecialchars($p['name']) ?>">
-                </div>
+                <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=product&id=<?= $p['id'] ?>" class="block">
+                  <div class="h-40 md:h-48 w-full rounded-xl overflow-hidden bg-slate-50 p-2 cursor-pointer">
+                    <img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="<?= $p['img'] ?>" alt="<?= htmlspecialchars($p['name']) ?>">
+                  </div>
+                </a>
 
-                <h3 class="text-xs md:text-sm font-bold text-slate-800 line-clamp-2 leading-snug group-hover:text-rose-600 transition-colors">
-                  <?= htmlspecialchars($p['name']) ?>
-                </h3>
+                <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=product&id=<?= $p['id'] ?>" class="block">
+                  <h3 class="text-xs md:text-sm font-bold text-slate-800 line-clamp-2 leading-snug group-hover:text-rose-600 transition-colors cursor-pointer">
+                    <?= htmlspecialchars($p['name']) ?>
+                  </h3>
+                </a>
               </div>
 
               <div class="pt-3 border-t border-slate-100 mt-3 space-y-2">
@@ -278,12 +282,20 @@ $skincareProducts = [
                   <?php endif; ?>
                 </div>
 
-                <button type="button" onclick="openQuickViewModal('<?= $p['id'] ?>', '<?= addslashes($p['name']) ?>', '<?= $p['price'] ?>', '<?= $p['old_price'] ?? '' ?>', '<?= $p['img'] ?>')" class="w-full bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1 transition-all">
-                  <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
-                  <span>Chọn mua</span>
-                </button>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <button type="button" onclick="openQuickViewModal('<?= $p['id'] ?>', '<?= addslashes($p['name']) ?>', '<?= $p['price'] ?>', '<?= $p['old_price'] ?? '' ?>', '<?= $p['img'] ?>')" class="w-full bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold py-2 rounded-xl text-[11px] flex items-center justify-center gap-1 transition-all">
+                    <span>+ Giỏ</span>
+                  </button>
+
+                  <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=checkout" method="POST" class="inline">
+                    <input type="hidden" name="action" value="buy_now">
+                    <input type="hidden" name="product_id" value="<?= $p['id'] ?>">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-xl text-[11px] flex items-center justify-center transition-all shadow-2xs">
+                      ⚡ Mua ngay
+                    </button>
+                  </form>
+                </div>
               </div>
 
             </div>

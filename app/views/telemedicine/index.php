@@ -3,7 +3,7 @@
 <main class="container mx-auto px-4 md:max-w-[1384px] py-6">
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-xs text-slate-500 mb-6">
-    <a href="/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
+    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
     <span>/</span>
     <span class="font-semibold text-slate-800">Khám Bệnh Telemedicine & Đơn Thuốc Trực Tuyến</span>
   </div>
@@ -58,7 +58,7 @@
             </div>
           </div>
 
-          <form action="/index.php?route=telemedicine" method="POST">
+          <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=telemedicine" method="POST">
             <input type="hidden" name="action" value="book_doctor">
             <input type="hidden" name="doctor_id" value="<?= $doc['id'] ?>">
             <input type="hidden" name="book_date" value="<?= date('d/m/Y') ?>">
@@ -116,7 +116,7 @@
           </div>
         </div>
 
-        <a href="/index.php?route=checkout" class="mt-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-center py-2.5 rounded-xl transition-all">
+        <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=checkout" class="mt-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-center py-2.5 rounded-xl transition-all">
           🚀 Đặt Giao Đơn Thuốc Này (1H)
         </a>
       </div>

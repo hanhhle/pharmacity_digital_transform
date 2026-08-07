@@ -8,6 +8,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if (!defined('BASE_URL')) {
+    $scriptDir = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? ''), '/\\');
+    define('BASE_URL', ($scriptDir === '/' || $scriptDir === '\\') ? '' : $scriptDir);
+}
+
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 require_once __DIR__ . '/app/controllers/HomeController.php';

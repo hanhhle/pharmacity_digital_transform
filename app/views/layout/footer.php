@@ -88,8 +88,8 @@
       <div class="flex flex-col gap-3">
         <h4 class="font-base text-lg font-bold text-white">Về Pharmacity</h4>
         <div class="flex flex-col space-y-1.5 text-xs md:text-sm text-slate-100">
-          <a class="hover:opacity-80 transition-opacity" href="/index.php?route=home">Giới thiệu</a>
-          <a class="hover:opacity-80 transition-opacity" href="/index.php?route=kiosk">Hệ thống cửa hàng</a>
+          <a class="hover:opacity-80 transition-opacity" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home">Giới thiệu</a>
+          <a class="hover:opacity-80 transition-opacity" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=kiosk">Hệ thống cửa hàng</a>
           <a class="hover:opacity-80 transition-opacity" href="#">Giấy phép kinh doanh</a>
           <a class="hover:opacity-80 transition-opacity" href="#">Quy chế hoạt động</a>
           <a class="hover:opacity-80 transition-opacity" href="#">Chính sách đổi trả và bảo hành</a>
@@ -107,17 +107,17 @@
       <div class="flex flex-col gap-3">
         <h4 class="font-base text-lg font-bold text-white">Danh mục</h4>
         <div class="flex flex-col space-y-1.5 text-xs md:text-sm text-slate-100">
-          <a href="/index.php?route=category&name=Thuoc" class="hover:opacity-80 transition-opacity">Thuốc</a>
-          <a href="/index.php?route=category&name=Tra+cuu+benh" class="hover:opacity-80 transition-opacity">Tra cứu bệnh</a>
-          <a href="/index.php?route=category&name=Thuc+pham+chuc+nang" class="hover:opacity-80 transition-opacity">Thực phẩm bảo vệ sức khỏe</a>
-          <a href="/index.php?route=category&name=Cham+soc+ca+nhan" class="hover:opacity-80 transition-opacity">Chăm sóc cá nhân</a>
-          <a href="/index.php?route=category&name=Me+va+be" class="hover:opacity-80 transition-opacity">Mẹ và Bé</a>
-          <a href="/index.php?route=category&name=Cham+soc+sac+dep" class="hover:opacity-80 transition-opacity">Chăm sóc sắc đẹp</a>
-          <a href="/index.php?route=category&name=Thiet+bi+y+te" class="hover:opacity-80 transition-opacity">Thiết bị y tế</a>
-          <a href="/index.php?route=category&name=Nhan+hang+Pharmacity" class="hover:opacity-80 transition-opacity">Nhãn hàng Pharmacity</a>
-          <a href="/index.php?route=category&name=Khuyen+mai+HOT" class="hover:opacity-80 transition-opacity">Khuyến mãi HOT 🔥</a>
-          <a href="/index.php?route=category&name=Goc+suc+khoe" class="hover:opacity-80 transition-opacity">Góc sức khỏe</a>
-          <a href="/index.php?route=telemedicine" class="hover:opacity-80 transition-opacity">Đội ngũ chuyên môn</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Thuoc" class="hover:opacity-80 transition-opacity">Thuốc</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Tra+cuu+benh" class="hover:opacity-80 transition-opacity">Tra cứu bệnh</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Thuc+pham+chuc+nang" class="hover:opacity-80 transition-opacity">Thực phẩm bảo vệ sức khỏe</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Cham+soc+ca+nhan" class="hover:opacity-80 transition-opacity">Chăm sóc cá nhân</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Me+va+be" class="hover:opacity-80 transition-opacity">Mẹ và Bé</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Cham+soc+sac+dep" class="hover:opacity-80 transition-opacity">Chăm sóc sắc đẹp</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Thiet+bi+y+te" class="hover:opacity-80 transition-opacity">Thiết bị y tế</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Nhan+hang+Pharmacity" class="hover:opacity-80 transition-opacity">Nhãn hàng Pharmacity</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Khuyen+mai+HOT" class="hover:opacity-80 transition-opacity">Khuyến mãi HOT 🔥</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Goc+suc+khoe" class="hover:opacity-80 transition-opacity">Góc sức khỏe</a>
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=telemedicine" class="hover:opacity-80 transition-opacity">Đội ngũ chuyên môn</a>
         </div>
       </div>
 
@@ -262,7 +262,7 @@
         </div>
 
         <!-- Action Buttons Form -->
-        <form id="qv-modal-form" action="/index.php?route=cart" method="POST" class="pt-3 border-t border-slate-100">
+        <form id="qv-modal-form" action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart" method="POST" class="pt-3 border-t border-slate-100">
           <input type="hidden" id="qv-form-product-id" name="product_id" value="">
           <input type="hidden" id="qv-form-qty" name="quantity" value="1">
           <input type="hidden" id="qv-form-action" name="action" value="add">
@@ -410,7 +410,7 @@
       formData.append('quantity', qty);
       formData.append('is_ajax', '1');
 
-      fetch('/index.php?route=cart', {
+      fetch('<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart', {
         method: 'POST',
         headers: { 'X-Requested-With': 'XMLHttpRequest' },
         body: formData
@@ -433,8 +433,10 @@
     }
 
     function quickViewBuyNow() {
+      const form = document.getElementById('qv-modal-form');
+      form.action = '<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=checkout';
       document.getElementById('qv-form-action').value = 'buy_now';
-      document.getElementById('qv-modal-form').submit();
+      form.submit();
     }
   </script>
 </body>

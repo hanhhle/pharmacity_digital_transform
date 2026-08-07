@@ -3,9 +3,9 @@
 <main class="container mx-auto px-4 md:max-w-[1384px] py-6">
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-xs text-slate-500 mb-6">
-    <a href="/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
+    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
     <span>/</span>
-    <a href="/index.php?route=account" class="hover:text-blue-600">Tài khoản</a>
+    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=account" class="hover:text-blue-600">Tài khoản</a>
     <span>/</span>
     <span class="font-semibold text-slate-800">Trạm Kiosk Sức Khỏe IoT Tại Nhà Thuốc</span>
   </div>
@@ -50,7 +50,7 @@
 
         <!-- Small Subtle Simulation Action Button (Defaulting to Normal Reading 118/78) -->
         <div>
-          <form action="/index.php?route=kiosk" method="POST" class="inline-block">
+          <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=kiosk" method="POST" class="inline-block">
             <input type="hidden" name="action" value="sync_kiosk">
             <input type="hidden" name="sys" value="118">
             <input type="hidden" name="dia" value="78">
@@ -259,7 +259,7 @@
             Thử nghiệm thay đổi tình huống đo (Developer Simulator)
           </summary>
           <div class="mt-3 p-4 bg-slate-50 border border-slate-200 rounded-xl">
-            <form action="/index.php?route=kiosk" method="POST" class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <form action="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=kiosk" method="POST" class="grid grid-cols-2 md:grid-cols-4 gap-3">
               <input type="hidden" name="action" value="sync_kiosk">
               <div>
                 <label class="block font-bold">SYS (Tâm thu)</label>

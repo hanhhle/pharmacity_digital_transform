@@ -3,7 +3,7 @@
 <main class="container mx-auto px-4 md:max-w-[1384px] py-6">
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-xs text-slate-500 mb-6">
-    <a href="/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
+    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
     <span>/</span>
     <span class="font-semibold text-slate-800">AI Dự Báo Nhu Cầu & Quản Lý Hạn Dùng FEFO (Admin Portal)</span>
   </div>

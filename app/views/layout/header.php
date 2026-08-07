@@ -47,7 +47,7 @@
   <link rel="stylesheet" href="https://prod-cdn.pharmacity.io/assets/20260805/_next/static/css/94b9fda2336e421b.css">
   <link rel="stylesheet" href="https://prod-cdn.pharmacity.io/assets/20260805/_next/static/css/e18fe9e02232d51a.css">
 
-  <link rel="stylesheet" href="/public/css/style.css">
+  <link rel="stylesheet" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/public/css/style.css">
   <link rel="shortcut icon" href="https://www.pharmacity.vn/favicon.ico" type="image/x-icon">
 </head>
 <body class="overflow-x-hidden bg-neutral-100 md:h-[100%] new-ui">
@@ -87,19 +87,19 @@
               <img class="object-cover" src="https://prod-cdn.pharmacity.io/e-com/images/ecommerce/20240520103330-0-20240403091737-0-new-bagde.png" alt="Doanh nghiệp" loading="lazy">
             </div>
           </a>
-          <a rel="noopener noreferrer" target="_blank" class="grid grid-flow-col items-center justify-start gap-1" href="/index.php?route=category&name=Deal+hot">
+          <a rel="noopener noreferrer" target="_blank" class="grid grid-flow-col items-center justify-start gap-1" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Deal+hot">
             <label class="font-base text-sm leading-14 font-medium cursor-pointer truncate" title="Deal hot tháng 08 🔥">Deal hot tháng 08 🔥</label>
           </a>
-          <a target="_self" class="grid grid-flow-col items-center justify-start gap-1" href="/index.php?route=checkout">
+          <a target="_self" class="grid grid-flow-col items-center justify-start gap-1" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=checkout">
             <label class="font-base text-sm leading-14 font-medium cursor-pointer truncate" title="Tra cứu đơn hàng">Tra cứu đơn hàng</label>
             <div class="relative h-4 w-8">
               <img class="object-cover" src="https://prod-cdn.pharmacity.io/e-com/images/ecommerce/20240816073820-0-Frame%2024020.png" alt="Tra cứu đơn hàng" loading="lazy">
             </div>
           </a>
-          <a rel="noopener noreferrer" target="_blank" class="grid grid-flow-col items-center justify-start gap-1" href="/index.php?route=category&name=Goc+suc+khoe">
+          <a rel="noopener noreferrer" target="_blank" class="grid grid-flow-col items-center justify-start gap-1" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Goc+suc+khoe">
             <label class="font-base text-sm leading-14 font-medium cursor-pointer truncate" title="Góc sức khỏe">Góc sức khỏe</label>
           </a>
-          <a target="_self" class="grid grid-flow-col items-center justify-start gap-1" href="/index.php?route=kiosk">
+          <a target="_self" class="grid grid-flow-col items-center justify-start gap-1" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=kiosk">
             <label class="font-base text-sm leading-14 font-medium cursor-pointer truncate" title="Hệ thống nhà thuốc">Hệ thống nhà thuốc</label>
           </a>
         </div>
@@ -118,14 +118,14 @@
               </div>
             </div>
           </div>
-          <a id="pmc-logo" class="flex items-center shrink-0" href="/index.php?route=home">
+          <a id="pmc-logo" class="flex items-center shrink-0" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home">
             <img class="h-8 object-cover md:h-[60px] md:min-w-[150px]" src="https://prod-cdn.pharmacity.io/e-com/images/static-website/pharmacity-logo.svg" alt="Pharmacity Logo" loading="lazy">
           </a>
         </div>
 
         <div class="flex flex-1 items-center gap-1 md:gap-6">
           <div class="category">
-            <button onclick="window.location.href='/index.php?route=category&name=Tat+ca+danh+muc'" class="items-center justify-center whitespace-nowrap rounded-2xs font-semibold hidden h-11 gap-2 border border-white/30 bg-white/10 px-4 py-2.5 text-white hover:bg-white/20 md:flex">
+            <button onclick="window.location.href='<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Tat+ca+danh+muc'" class="items-center justify-center whitespace-nowrap rounded-2xs font-semibold hidden h-11 gap-2 border border-white/30 bg-white/10 px-4 py-2.5 text-white hover:bg-white/20 md:flex">
               <svg fill="none" viewBox="0 0 24 24" aria-hidden="true" class="inline-block shrink-0 w-6 h-6 text-white">
                 <path fill="currentColor" d="M9.25 4A.25.25 0 0 0 9 3.75H4a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h5A.25.25 0 0 0 9.25 9zm1.5 5A1.75 1.75 0 0 1 9 10.75H4A1.75 1.75 0 0 1 2.25 9V4c0-.966.784-1.75 1.75-1.75h5c.966 0 1.75.784 1.75 1.75zM20.25 4a.25.25 0 0 0-.25-.25h-5a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h5a.25.25 0 0 0 .25-.25zm1.5 5A1.75 1.75 0 0 1 20 10.75h-5A1.75 1.75 0 0 1 13.25 9V4c0-.966.784-1.75 1.75-1.75h5c.966 0 1.75.784 1.75 1.75zM9.25 15a.25.25 0 0 0-.25-.25H4a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h5a.25.25 0 0 0 .25-.25zm1.5 5A1.75 1.75 0 0 1 9 21.75H4A1.75 1.75 0 0 1 2.25 20v-5c0-.966.784-1.75 1.75-1.75h5c.966 0 1.75.784 1.75 1.75zM20.25 15a.25.25 0 0 0-.25-.25h-5a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h5a.25.25 0 0 0 .25-.25zm1.5 5A1.75 1.75 0 0 1 20 21.75h-5A1.75 1.75 0 0 1 13.25 20v-5c0-.966.784-1.75 1.75-1.75h5c.966 0 1.75.784 1.75 1.75z"></path>
               </svg>
@@ -138,19 +138,19 @@
 
           <!-- Desktop Top Links (Hidden on Mobile) -->
           <div id="pmc-top-category" class="w-full items-center gap-6 transition-all hidden md:flex">
-            <a class="flex items-center hover:opacity-90" title="Thuốc" href="/index.php?route=category&name=Thuoc">
+            <a class="flex items-center hover:opacity-90" title="Thuốc" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Thuoc">
               <span class="font-base text-sm leading-14 font-semibold text-white">Thuốc</span>
             </a>
-            <a class="flex items-center hover:opacity-90" title="Tra cứu bệnh" href="/index.php?route=category&name=Tra+cuu+benh">
+            <a class="flex items-center hover:opacity-90" title="Tra cứu bệnh" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Tra+cuu+benh">
               <span class="font-base text-sm leading-14 font-semibold text-white">Tra cứu bệnh</span>
             </a>
-            <a class="flex items-center hover:opacity-90" title="Thực phẩm bảo vệ sức khỏe" href="/index.php?route=category&name=Thuc+pham+bao+ve+suc+khoe">
+            <a class="flex items-center hover:opacity-90" title="Thực phẩm bảo vệ sức khỏe" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Thuc+pham+bao+ve+suc+khoe">
               <span class="font-base text-sm leading-14 font-semibold text-white">Thực phẩm bảo vệ sức khỏe</span>
             </a>
-            <a class="flex items-center hover:opacity-90" title="Mẹ và bé" href="/index.php?route=category&name=Me+va+be">
+            <a class="flex items-center hover:opacity-90" title="Mẹ và bé" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Me+va+be">
               <span class="font-base text-sm leading-14 font-semibold text-white">Mẹ và bé</span>
             </a>
-            <a class="flex items-center hover:opacity-90" title="Nhãn hàng Pharmacity" href="/index.php?route=category&name=Nhan+hang+Pharmacity">
+            <a class="flex items-center hover:opacity-90" title="Nhãn hàng Pharmacity" href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=category&name=Nhan+hang+Pharmacity">
               <span class="font-base text-sm leading-14 font-semibold text-white">Nhãn hàng Pharmacity</span>
             </a>
           </div>
@@ -169,7 +169,7 @@
 
         <div class="ml-auto flex items-center gap-2 md:gap-4 shrink-0">
           <!-- Notification Bell -->
-          <a href="/index.php?route=account" class="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20">
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=account" class="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20">
             <svg fill="none" viewBox="0 0 24 24" aria-hidden="true" class="inline-block shrink-0 w-5 h-5">
               <path fill="currentColor" d="M11.999 2.167c4.557 0 6.876 3.684 6.876 6.82v3.108c0 .367.147.72.407.981l.713.713.202.224c.446.543.693 1.227.693 1.936a2.933 2.933 0 0 1-2.933 2.934h-2.605a3.38 3.38 0 0 1-6.704 0H6.044a2.933 2.933 0 0 1-2.933-2.934c0-.81.322-1.587.895-2.16l.713-.713.092-.101c.202-.248.314-.559.314-.88V8.987c0-3.137 2.316-6.82 6.874-6.82m-1.656 18.716a1.712 1.712 0 0 0 3.313 0zm1.656-15.05c-3.442 0-5.207 2.73-5.207 5.154v3.108c0 .709-.247 1.393-.692 1.936l-.204.224-.711.712c-.261.26-.408.615-.408.982 0 .7.567 1.267 1.267 1.267h8.481l.022-.001h3.41c.7 0 1.267-.566 1.267-1.266a1.4 1.4 0 0 0-.316-.88l-.092-.102-.712-.712a3.06 3.06 0 0 1-.895-2.16V8.987c0-2.423-1.767-5.154-5.21-5.154"></path>
             </svg>
@@ -181,7 +181,7 @@ require_once __DIR__ . '/../../models/CartModel.php';
 $cartBadgeCount = CartModel::getCartCount(1);
 ?>
           <!-- Cart Icon -->
-          <a href="/index.php?route=cart" class="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20" title="Giỏ hàng">
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart" class="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20" title="Giỏ hàng">
             <svg fill="none" viewBox="0 0 24 24" aria-hidden="true" class="inline-block shrink-0 w-5 h-5">
               <path fill="currentColor" d="M19.403 5.783a2.75 2.75 0 0 1 2.698 3.29l-.039.162-1.478 5.596a2.75 2.75 0 0 1-2.42 2.038l-8.4.73a2.75 2.75 0 0 1-2.907-2.07l-2.21-8.813a.75.75 0 0 1 .727-.933zm-11.09 9.381c.149.595.71.995 1.32.941l8.401-.73a1.25 1.25 0 0 0 1.1-.927l1.478-5.596.03-.148a1.25 1.25 0 0 0-1.239-1.42H6.336z"></path>
               <path fill="currentColor" d="m4.608 2.25.13.012a.75.75 0 0 1 .604.579l.764 3.533.013.076a.75.75 0 0 1-1.458.316l-.02-.075-.638-2.941H2.578a.75.75 0 0 1 0-1.5zM18.072 18.522c.784.04 1.406.684 1.41 1.474V20l-.007.151a1.483 1.483 0 0 1-2.95 0L16.518 20a1.474 1.474 0 0 1 1.4-1.477 1 1 0 0 1 .078-.005zM9.073 18.52A1.482 1.482 0 0 1 9 21.484c-.81 0-1.479-.655-1.478-1.477H7.52v-.015c0-.792.623-1.429 1.399-1.47a1 1 0 0 1 .078-.004z"></path>
@@ -190,7 +190,7 @@ $cartBadgeCount = CartModel::getCartCount(1);
           </a>
 
           <!-- User Login Profile -->
-          <a href="/index.php?route=account" class="hidden md:flex items-center gap-1.5 text-white hover:text-slate-100">
+          <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=account" class="hidden md:flex items-center gap-1.5 text-white hover:text-slate-100">
             <svg fill="none" viewBox="0 0 24 24" aria-hidden="true" class="inline-block shrink-0 h-6 w-6">
               <path fill="currentColor" d="M20.25 12a8.25 8.25 0 1 0-16.5 0 8.25 8.25 0 0 0 16.5 0m1.5 0c0 5.385-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12 6.615 2.25 12 2.25s9.75 4.365 9.75 9.75"></path>
               <path fill="currentColor" d="M14.443 9.19a2.44 2.44 0 1 0-4.88 0 2.44 2.44 0 0 0 4.88 0m1.5 0a3.94 3.94 0 1 1-7.88-.001 3.94 3.94 0 0 1 7.88 0M5.25 18.5v-.87A3.75 3.75 0 0 1 9 13.88h3.894l.076.004a.75.75 0 0 1 0 1.492l-.076.004H9a2.25 2.25 0 0 1-2.25 2.25v.87a.75.75 0 0 1-1.5 0"></path>

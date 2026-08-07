@@ -3,7 +3,7 @@
 <main class="container mx-auto px-4 md:max-w-[1384px] py-6">
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-xs text-slate-500 mb-6">
-    <a href="/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
+    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
     <span>/</span>
     <span class="font-semibold text-slate-800">Đặt Hàng Omnichannel & Giao Siêu Tốc 1H</span>
   </div>
@@ -15,7 +15,7 @@
         <h1 class="text-xl font-bold text-slate-900 mt-1">Đặt Hàng Omnichannel & Giao Hàng Siêu Tốc 1 Giờ</h1>
         <p class="text-xs text-slate-500 mt-0.5">Lựa chọn linh hoạt: Giao siêu tốc 1H, Nhận tại cửa hàng (Click & Collect), hoặc Đăng ký định kỳ (Subscription).</p>
       </div>
-      <a href="/index.php?route=home" class="text-xs font-bold text-blue-600 hover:underline">← Tiếp tục mua sắm</a>
+      <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="text-xs font-bold text-blue-600 hover:underline">← Tiếp tục mua sắm</a>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -86,20 +86,26 @@
           <h3 class="font-bold text-slate-900 text-base mb-3 pb-2 border-b border-slate-200">Tóm Tắt Đơn Hàng</h3>
 
           <?php 
-            $total = 0;
+            $subtotal = 0;
             foreach ($cartItems as $item): 
-              $total += $item['price'];
+              $itemQty = intval($item['cart_quantity'] ?? 1);
+              $itemSubtotal = $item['price'] * $itemQty;
+              $subtotal += $itemSubtotal;
           ?>
             <div class="flex items-center justify-between text-xs py-1.5 border-b border-slate-100">
               <div>
                 <span class="font-bold text-slate-800 block"><?= htmlspecialchars($item['name']) ?></span>
-                <span class="text-slate-400 text-[11px]">x1 <?= htmlspecialchars($item['unit']) ?></span>
+                <span class="text-slate-400 text-[11px]">x<?= $itemQty ?> <?= htmlspecialchars($item['unit'] ?? 'Hộp') ?></span>
               </div>
-              <span class="font-bold text-blue-600"><?= number_format($item['price'], 0, ',', '.') ?> đ</span>
+              <span class="font-bold text-blue-600"><?= number_format($itemSubtotal, 0, ',', '.') ?> đ</span>
             </div>
           <?php endforeach; ?>
 
           <div class="space-y-1.5 text-xs text-slate-600 mt-4 pt-3 border-t border-slate-200">
+            <div class="flex justify-between">
+              <span>Tạm tính:</span>
+              <span class="font-bold text-slate-800"><?= number_format($subtotal, 0, ',', '.') ?> ₫</span>
+            </div>
             <div class="flex justify-between">
               <span>Phí vận chuyển 1H:</span>
               <span class="text-emerald-600 font-bold">Miễn phí</span>
@@ -110,12 +116,12 @@
             </div>
             <div class="flex justify-between text-sm font-bold text-slate-900 pt-2 border-t border-slate-200">
               <span>Tổng thanh toán:</span>
-              <span class="text-xl font-black text-blue-600"><?= number_format(max(0, $total - 15000), 0, ',', '.') ?> ₫</span>
+              <span class="text-xl font-black text-blue-600"><?= number_format(max(0, $subtotal - 15000), 0, ',', '.') ?> ₫</span>
             </div>
           </div>
         </div>
 
-        <button onclick="alert('🎉 Đơn hàng đã được xác nhận thành công! Dược sĩ Pharmacity đang tiến hành lấy hàng và bàn giao cho tài xế giao 1H.'); window.location.href='/index.php?route=account';" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm py-3 rounded-xl transition-all shadow-md">
+        <button onclick="alert('🎉 Đơn hàng đã được xác nhận thành công! Dược sĩ Pharmacity đang tiến hành lấy hàng và bàn giao cho tài xế giao 1H.'); window.location.href='<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=account';" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm py-3 rounded-xl transition-all shadow-md">
           ✅ Xác Nhận Thanh Toán & Đặt Hàng
         </button>
       </div>

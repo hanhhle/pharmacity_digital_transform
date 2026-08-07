@@ -87,7 +87,7 @@ unset($st);
 <main class="container mx-auto px-4 md:max-w-[1384px] py-6">
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-xs text-slate-500 mb-4 no-print">
-    <a href="/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
+    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=home" class="hover:text-blue-600">Trang chủ</a>
     <span>/</span>
     <span class="font-semibold text-slate-800">Hệ thống nhà thuốc</span>
   </div>
@@ -212,7 +212,7 @@ unset($st);
             </a>
 
             <?php if ($st['has_kiosk']): ?>
-              <a href="/index.php?route=kiosk&step=connect" class="flex items-center justify-center gap-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2 py-2 rounded-xl transition-all shadow-2xs whitespace-nowrap">
+              <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=kiosk&step=connect" class="flex items-center justify-center gap-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2 py-2 rounded-xl transition-all shadow-2xs whitespace-nowrap">
                 <span class="whitespace-nowrap">Kiosk Đo IoT →</span>
               </a>
             <?php else: ?>
