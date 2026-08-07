@@ -28,6 +28,12 @@ class CartController {
                 CartModel::removeItem($userId, $productId);
             } elseif ($action === 'clear') {
                 CartModel::clearCart($userId);
+            } elseif ($action === 'toggle_select' && $productId > 0) {
+                $isSelected = intval($_POST['is_selected'] ?? 1);
+                CartModel::updateSelection($userId, $productId, $isSelected);
+            } elseif ($action === 'select_all') {
+                $isSelected = intval($_POST['is_selected'] ?? 1);
+                CartModel::selectAll($userId, $isSelected);
             }
 
             if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {

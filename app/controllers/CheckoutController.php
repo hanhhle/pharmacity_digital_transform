@@ -36,14 +36,10 @@ class CheckoutController {
 
         $allCartItems = CartModel::getCartItems($userId);
         
-        // Filter $cartItems so Checkout ONLY displays recent/checked items
+        // Filter $cartItems so Checkout ONLY displays items that are selected (is_selected == 1)
         $cartItems = array_filter($allCartItems, function($item) {
-            return !empty($item['auto_checked']);
+            return !empty($item['is_selected']);
         });
-
-        if (empty($cartItems)) {
-            $cartItems = $allCartItems;
-        }
 
         $aiRecommendations = ProductModel::getAIRecommendations();
         $user = UserModel::getUserProfile();

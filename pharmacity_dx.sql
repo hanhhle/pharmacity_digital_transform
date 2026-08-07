@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th8 07, 2026 lúc 08:47 PM
+-- Thời gian đã tạo: Th8 07, 2026 lúc 09:24 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -42,15 +42,17 @@ CREATE TABLE `cart_items` (
 --
 
 INSERT INTO `cart_items` (`id`, `user_id`, `product_id`, `quantity`, `is_selected`, `created_at`, `updated_at`) VALUES
-(4, 1, 13, 1, 1, '2026-08-07 18:22:58', '2026-08-07 18:22:58'),
-(6, 1, 9, 2, 1, '2026-08-07 18:23:16', '2026-08-07 18:23:19'),
-(8, 1, 1, 1, 1, '2026-08-07 18:24:15', '2026-08-07 18:45:55'),
-(9, 1, 8, 1, 1, '2026-08-07 18:25:05', '2026-08-07 18:25:05'),
-(10, 1, 4, 1, 1, '2026-08-07 18:25:51', '2026-08-07 18:25:51'),
-(12, 1, 15, 2, 1, '2026-08-07 18:38:55', '2026-08-07 18:38:55'),
-(13, 1, 16, 1, 1, '2026-08-07 18:38:55', '2026-08-07 18:38:55'),
-(14, 1, 17, 1, 1, '2026-08-07 18:38:55', '2026-08-07 18:38:55'),
-(27, 1, 6, 1, 1, '2026-08-07 18:42:31', '2026-08-07 18:42:31');
+(4, 1, 13, 1, 0, '2026-08-07 18:22:58', '2026-08-07 19:14:20'),
+(6, 1, 9, 2, 0, '2026-08-07 18:23:16', '2026-08-07 19:14:20'),
+(8, 1, 1, 1, 0, '2026-08-07 18:24:15', '2026-08-07 19:14:20'),
+(9, 1, 8, 1, 0, '2026-08-07 18:25:05', '2026-08-07 19:14:20'),
+(10, 1, 4, 3, 0, '2026-08-07 18:25:51', '2026-08-07 19:14:20'),
+(12, 1, 15, 2, 0, '2026-08-07 18:38:55', '2026-08-07 19:14:20'),
+(13, 1, 16, 1, 0, '2026-08-07 18:38:55', '2026-08-07 19:14:20'),
+(14, 1, 17, 1, 0, '2026-08-07 18:38:55', '2026-08-07 19:14:20'),
+(27, 1, 6, 1, 0, '2026-08-07 18:42:31', '2026-08-07 19:14:20'),
+(257, 1, 7, 1, 0, '2026-08-07 19:13:16', '2026-08-07 19:14:20'),
+(263, 1, 0, 1, 1, '2026-08-07 19:14:20', '2026-08-07 19:17:59');
 
 -- --------------------------------------------------------
 
@@ -361,9 +363,9 @@ CREATE TABLE `telemedicine_doctors` (
 --
 
 INSERT INTO `telemedicine_doctors` (`id`, `name`, `specialty`, `hospital`, `rating`, `consultation_fee`, `avatar`, `available_time`) VALUES
-(1, 'BS. CKII Nguyễn Thị Thanh', 'Nội khoa & Huyết áp', 'Bệnh viện Đại học Y Dược TP.HCM', 4.9, 150000, 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200', '08:00 - 17:30 Hôm nay'),
+(1, 'BS. CKII Nguyễn Thị Thanh', 'Nội khoa & Huyết áp', 'Bệnh viện Đại học Y Dược TP.HCM', 4.9, 150000, 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=200', '08:00 - 17:30 Hôm nay'),
 (2, 'ThS. BS Trần Minh Hoàng', 'Da liễu & Dược mỹ phẩm', 'Bệnh viện Da Liễu TP.HCM', 4.8, 180000, 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200', '09:00 - 20:00 Hôm nay'),
-(3, 'BS. CKI Lê Hoàng Anh', 'Nhi khoa & Dinh dưỡng', 'Bệnh viện Nhi Đồng 1', 5.0, 160000, 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=200', '13:00 - 21:00 Hôm nay');
+(3, 'BS. CKI Lê Hoàng Anh', 'Nhi khoa & Dinh dưỡng', 'Bệnh viện Nhi Đồng 1', 5.0, 160000, 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200', '13:00 - 21:00 Hôm nay');
 
 -- --------------------------------------------------------
 
@@ -587,7 +589,7 @@ ALTER TABLE `user_prescriptions`
 -- AUTO_INCREMENT cho bảng `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
 
 --
 -- AUTO_INCREMENT cho bảng `demand_forecasts`

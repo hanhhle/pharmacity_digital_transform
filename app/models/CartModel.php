@@ -232,7 +232,7 @@ class CartModel {
             $_SESSION['user_cart'][$userId] = [];
         }
 
-        // Uncheck / deprioritize all previous cart items
+        // Uncheck / deprioritize all previous cart items in session & DB
         foreach ($_SESSION['user_cart'][$userId] as $pId => &$itemData) {
             if (is_array($itemData)) {
                 $itemData['is_selected'] = 0;
@@ -240,6 +240,14 @@ class CartModel {
             }
         }
         unset($itemData);
+
+        if (!Database::isMockMode()) {
+            try {
+                $pdo = Database::getConnection();
+                $stmt = $pdo->prepare("UPDATE cart_items SET is_selected = 0 WHERE user_id = :uid");
+                $stmt->execute([':uid' => $userId]);
+            } catch (Exception $e) {}
+        }
 
         foreach ($itemsList as $item) {
             $pId = is_array($item) ? $item['id'] : intval($item);
@@ -259,6 +267,49 @@ class CartModel {
                     $stmt->execute([':uid' => $userId, ':pid' => $pId, ':qty' => $qty, ':qty2' => $qty]);
                 } catch (Exception $e) {}
             }
+        }
+    }
+
+    public static function updateSelection($userId, $productId, $isSelected) {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $isSelected = $isSelected ? 1 : 0;
+        if (isset($_SESSION['user_cart'][$userId][$productId])) {
+            if (is_array($_SESSION['user_cart'][$userId][$productId])) {
+                $_SESSION['user_cart'][$userId][$productId]['is_selected'] = $isSelected;
+            }
+        }
+
+        if (!Database::isMockMode()) {
+            try {
+                $pdo = Database::getConnection();
+                $stmt = $pdo->prepare("UPDATE cart_items SET is_selected = :sel WHERE user_id = :uid AND product_id = :pid");
+                $stmt->execute([':sel' => $isSelected, ':uid' => $userId, ':pid' => $productId]);
+            } catch (Exception $e) {}
+        }
+    }
+
+    public static function selectAll($userId, $isSelected) {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $isSelected = $isSelected ? 1 : 0;
+        if (isset($_SESSION['user_cart'][$userId]) && is_array($_SESSION['user_cart'][$userId])) {
+            foreach ($_SESSION['user_cart'][$userId] as $pId => &$itemData) {
+                if (is_array($itemData)) {
+                    $itemData['is_selected'] = $isSelected;
+                }
+            }
+            unset($itemData);
+        }
+
+        if (!Database::isMockMode()) {
+            try {
+                $pdo = Database::getConnection();
+                $stmt = $pdo->prepare("UPDATE cart_items SET is_selected = :sel WHERE user_id = :uid");
+                $stmt->execute([':sel' => $isSelected, ':uid' => $userId]);
+            } catch (Exception $e) {}
         }
     }
 

@@ -88,8 +88,8 @@
                     <div class="pt-2">
                       <input type="checkbox" 
                              class="cart-item-checkbox w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500 cursor-pointer"
-                             onchange="updateCartCalculations()"
-                             <?= $isAutoChecked ? 'checked' : '' ?>>
+                             onchange="onItemCheckboxChange(this, <?= $item['id'] ?>)"
+                             <?= !empty($item['is_selected']) ? 'checked' : '' ?>>
                     </div>
 
                     <!-- Product Info & Quantity controls -->
@@ -241,11 +241,40 @@
     return new Intl.NumberFormat('vi-VN').format(Math.max(0, amount)) + ' ₫';
   }
 
+  function onItemCheckboxChange(cb, productId) {
+    const isChecked = cb.checked ? 1 : 0;
+    
+    // AJAX update to CartController
+    const formData = new FormData();
+    formData.append('action', 'toggle_select');
+    formData.append('product_id', productId);
+    formData.append('is_selected', isChecked);
+
+    fetch('<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart', {
+      method: 'POST',
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+      body: formData
+    });
+
+    updateCartCalculations();
+  }
+
   function toggleSelectAll(isChecked) {
     const checkboxes = document.querySelectorAll('.cart-item-checkbox');
     checkboxes.forEach(cb => {
       cb.checked = isChecked;
     });
+
+    const formData = new FormData();
+    formData.append('action', 'select_all');
+    formData.append('is_selected', isChecked ? 1 : 0);
+
+    fetch('<?= (defined('BASE_URL') ? BASE_URL : '') ?>/index.php?route=cart', {
+      method: 'POST',
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+      body: formData
+    });
+
     updateCartCalculations();
   }
 
